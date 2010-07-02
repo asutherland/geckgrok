@@ -1,5 +1,5 @@
 
-var main = require("geckgrok/main");
+var splicer = require("geckgrok/splicer");
 
 var PRE_LINES = [
 "++DOCSHELL 0x7f7197668000 == 1",
@@ -72,7 +72,7 @@ function makeFileWriter(aDirPath, aFilename) {
 
 exports.testFrameDebugSplicer = function(test) {
   var lr = new FakeLineReader(LINES);
-  var mlp = new main.MozillaLogParser();
+  var mlp = new splicer.MozillaLogParser();
   mlp.context.makeFileWriter = makeFileWriter;
   mlp.chew(lr);
 

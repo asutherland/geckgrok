@@ -1,10 +1,14 @@
 
 var splicer = require("geckgrok/splicer");
 
+// the sample data is slightly modified from an exact copy and paste since I
+//  discovered the inner-window <=> presshell correspondence is through the
+//  outer window through the docshell.
 var PRE_LINES = [
 "++DOCSHELL 0x7f7197668000 == 1",
 "++DOMWINDOW == 1 (0x7f719766ac68) [serial = 1] [outer = (nil)]",
 "!!DOMWINDOW (0x7f719766ac68) [serial = 1] DOCSHELL == 0x7f71976680f8",
+"++DOMWINDOW == 4 (0x7fc73f263868) [serial = 4] [outer = 0x7f719766ac00]",
 "PresArena 0x7f719506a178 owns PresArena::State 0x7f719444d8d0",
 "PresShell 0x7f719506a000 owns PresArena 0x7f719506a178",
 "PresArena::State 0x7f719444d8d0 allocated 0x7f7194452000 with size 4103",
@@ -30,7 +34,7 @@ var LOG_LINES = [
 var POST_LINES = [
 "!!DOMWINDOW (0x7f719766ac68) [serial = 1] DOCSHELL == (nil)",
 "--DOCSHELL 0x7f7197668000 == 3",
-"--DOMWINDOW == 11 (0x7f719766ac68) [serial = 1] [outer = (nil)] [url = resource://gre-resources/hiddenWindow.html]",
+"--DOMWINDOW == 11 (0x7fc73f263868) [serial = 4] [outer = (nil)] [url = resource://gre-resources/hiddenWindow.html]",
 ];
 
 var LINES = [].concat(PRE_LINES).concat(LOG_LINES).concat(POST_LINES);

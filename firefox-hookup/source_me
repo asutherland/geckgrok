@@ -1,0 +1,4 @@
+THISDIR=`dirname ${BASH_SOURCE[0]}`
+export GECKO_DISPLAY_REFLOW_RULES_FILE=$THISDIR/reflow_rules.txt
+export XPCOM_DEBUG_BREAK=warn
+echo Hopefully correct: $GECKO_DISPLAY_REFLOW_RULES_FILE
